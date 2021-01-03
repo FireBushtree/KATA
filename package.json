@@ -1,0 +1,37 @@
+{
+  "name": "kata",
+  "version": "1.0.0",
+  "description": "easy code every day",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "commit": "git-cz",
+    "lint": "eslint --ext .js src"
+  },
+  "keywords": [
+    "kata",
+    "test"
+  ],
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "author": "owen huang",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "babel-eslint": "^10.1.0",
+    "commitizen": "^4.2.2",
+    "eslint": "^7.17.0",
+    "eslint-config-google": "^0.14.0",
+    "husky": "^4.3.6",
+    "jest": "^26.6.3",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1"
+  }
+}

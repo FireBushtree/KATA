@@ -5,10 +5,20 @@
  * @return {function}
  */
 function customBind(func, context, ...rest) {
-  return function(...innerRest) {
-    const res = func.call(context, ...rest, ...innerRest);
-    return res;
-  };
+  function fBoud(...innerRest) {
+    return func.call(
+      this instanceof fBoud ? this : context,
+      ...rest,
+      ...innerRest
+    );
+  }
+
+  function ProxyPrototype() {}
+
+  ProxyPrototype.prototype = func.prototype;
+  fBoud.prototype = new ProxyPrototype();
+
+  return fBoud;
 }
 
 export default customBind;

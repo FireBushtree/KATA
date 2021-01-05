@@ -6,6 +6,14 @@ const obj = {
   hobby: 'game',
 };
 
+function User() {
+  this.name = 'owen';
+  this.age = 23;
+  this.hobby = 'game';
+}
+
+User.prototype.testPrototype = true;
+
 /**
  * @return {string} name
  */
@@ -29,7 +37,7 @@ function addAge(...years) {
 
 describe('bind', () => {
   test('return value is a function', () => {
-    const res = customBind();
+    const res = customBind(() => {});
     expect(typeof res).toBe('function');
   });
 
@@ -39,15 +47,24 @@ describe('bind', () => {
     expect(res).toBe('game');
   });
 
-  test(`
-    Uncertain parameters, when bind can set params,
-    call binded function can set params
-  `, () => {
+  test(`Uncertain parameters, when bind can set params,
+    call binded function can set params`, () => {
     const func = customBind(addAge, obj, 10, 10, 10);
     const res = func(10, 10, 10);
 
     const originFunc = addAge.bind(obj, 10, 10, 10);
     const originRes = originFunc(10, 10, 10);
     expect(res).toBe(originRes);
+  });
+
+  test('new keyword & prototype', () => {
+    const Func = customBind(User);
+    const user = new Func();
+    expect(user).toMatchObject(obj);
+    expect(user.testPrototype).toBe(true);
+
+    User.testPrototype = false;
+    expect(User.testPrototype).toBe(false);
+    expect(user.testPrototype).toBe(true);
   });
 });

@@ -1,1 +1,3 @@
-# 自己实现一个`new`关键字
+# New
+
+模拟`javascript`中的`call`方法的实现。 [参考链接](https://github.com/mqyqingfeng/Blog/issues/13)

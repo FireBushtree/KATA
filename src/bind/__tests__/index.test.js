@@ -63,8 +63,8 @@ describe('bind', () => {
     expect(user).toMatchObject(obj);
     expect(user.testPrototype).toBe(true);
 
-    User.testPrototype = false;
-    expect(User.testPrototype).toBe(false);
-    expect(user.testPrototype).toBe(true);
+    Func.prototype.testPrototype = false;
+    expect(User.prototype.testPrototype).toBe(true);
+    expect(user.testPrototype).toBe(false);
   });
 });

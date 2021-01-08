@@ -1,24 +1,20 @@
-/**
- * @param {*} func
- * @param {*} context
- * @param  {...any} rest
- * @return {function}
- */
 function customBind(func, context, ...rest) {
-  function fBoud(...innerRest) {
-    return func.call(
-      this instanceof fBoud ? this : context,
+  function fBound(...innerRest) {
+    const res = func.call(
+      this instanceof ProxyPrototype ? this : context,
       ...rest,
       ...innerRest
     );
+
+    return res;
   }
 
   function ProxyPrototype() {}
 
   ProxyPrototype.prototype = func.prototype;
-  fBoud.prototype = new ProxyPrototype();
+  fBound.prototype = new ProxyPrototype();
 
-  return fBoud;
+  return fBound;
 }
 
 export default customBind;

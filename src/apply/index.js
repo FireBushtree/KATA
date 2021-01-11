@@ -1,14 +1,15 @@
 /**
- * custom `apply` function
+ * mock javascript's keyword apply
  * @param {*} func
  * @param {*} context
- * @param  {Array} params
+ * @param  {...any} rest
  * @return {*}
  */
-function customApply(func, context, params = []) {
+function customApply(func, context, rest) {
   context = context || window;
+  rest = rest || [];
   context.fn = func;
-  const res = context.fn(...params);
+  const res = context.fn(...rest);
   delete context.fn;
 
   return res;

@@ -5,12 +5,10 @@ function customBind(func, context, ...rest) {
       ...rest,
       ...innerRest
     );
-
     return res;
   }
 
   function ProxyPrototype() {}
-
   ProxyPrototype.prototype = func.prototype;
   fBound.prototype = new ProxyPrototype();
 
